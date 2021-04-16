@@ -10,3 +10,6 @@ read a b c
 
 solution1=`echo "$a+$b*$c" | bc`
 echo $solution1
+
+solution2=`echo "$a*$b+$c" | bc`
+echo $solution2
