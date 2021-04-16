@@ -19,3 +19,8 @@ echo $solution3
 
 solution4=`echo "$a%$b+$c" | bc`
 echo $solution4
+
+echo ${!solution1[@]}
+echo ${!solution2[@]}
+echo ${!solution3[@]}
+echo ${!solution4[@]}
