@@ -13,3 +13,6 @@ echo $solution1
 
 solution2=`echo "$a*$b+$c" | bc`
 echo $solution2
+
+solution3=`echo "scale=2;$c+$a/$b" | bc`
+echo $solution3
