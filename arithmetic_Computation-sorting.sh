@@ -8,19 +8,28 @@ echo "secondInput:b"
 echo "thirdInput:c"
 read a b c
 
-solution1=`echo "$a+$b*$c" | bc`
-echo ${!solution1[@]}
+counter=0
+solution[((counter++))]=`echo "$a+$b*$c" | bc`
+solution[((counter++))]=`echo "$a*$b+$c" | bc`
+solution[((counter++))]=`echo "$c+$a/$b" | bc`
+solution[((counter++))]=`echo "$a%$b+$c" | bc`
 
-solution2=`echo "$a*$b+$c" | bc`
-echo ${!solution2[@]}
+echo ${solution[@]}
+echo ${#solution[@]}
 
-solution3=`echo "scale=2;$c+$a/$b" | bc`
-echo ${!solution3[@]}
+for ((i = 0; i<4; i++))
+do
+    for((j = 0; j<4-i-1; j++))
+    do
+        if [ ${solution[j]} -lt ${solution[$((j+1))]} ]
+        then
+            # swap
+            temp=${solution[j]}
+            solution[$j]=${solution[$((j+1))]}
+            solution[$((j+1))]=$temp
+        fi
+    done
+done
 
-solution4=`echo "$a%$b+$c" | bc`
-echo ${!solution4[@]}
-
-echo ${solution1[@]}
-echo ${solution2[@]}
-echo ${solution3[@]}
-echo ${solution4[@]}
+echo "Array in Descending order: "
+echo ${solution[*]}
