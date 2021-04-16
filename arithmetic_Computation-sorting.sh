@@ -16,3 +16,6 @@ echo $solution2
 
 solution3=`echo "scale=2;$c+$a/$b" | bc`
 echo $solution3
+
+solution4=`echo "$a%$b+$c" | bc`
+echo $solution4
