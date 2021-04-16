@@ -21,7 +21,7 @@ for ((i = 0; i<4; i++))
 do
     for((j = 0; j<4-i-1; j++))
     do
-        if [ ${solution[j]} -lt ${solution[$((j+1))]} ]
+        if [ ${solution[j]} -gt ${solution[$((j+1))]} ]
         then
             # swap
             temp=${solution[j]}
@@ -31,5 +31,5 @@ do
     done
 done
 
-echo "Array in Descending order: "
+echo "Array in Ascending order: "
 echo ${solution[*]}
